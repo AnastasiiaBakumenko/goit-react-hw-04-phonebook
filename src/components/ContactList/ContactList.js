@@ -4,7 +4,7 @@ import { ContactListEl } from './ContactList.styled';
 
 export function ContactList({contacts, onDeleteContact}) {
     return (
-        <ContactListEl onClick={(e) => {onDeleteContact(e.target);}}>
+        <ContactListEl >
             {contacts.map((contact) => {
                     return (
                         <ContactItem 

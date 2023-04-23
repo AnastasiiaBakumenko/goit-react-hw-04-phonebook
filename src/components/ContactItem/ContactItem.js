@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import { Item, Button, Span } from './ContactItem.styled';
 
-export function ContactItem({name, number}) {
+export function ContactItem({name, number,onDeleteContact}) {
     return (
         <Item>{name}: <Span>{number}</Span>
-            <Button type='button' name={name}>Delete</Button>
+            <Button type='button' 
+            name={name}
+            onClick={(id) => {onDeleteContact(id.target.name);}}>Delete</Button>
         </Item>
     );
 };

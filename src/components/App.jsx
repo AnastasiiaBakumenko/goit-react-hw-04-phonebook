@@ -7,7 +7,7 @@ import { ContactList } from "./ContactList/ContactList";
 import { Container } from "./App.styled";
 
 export function App(){
-const [contacts, setContacts] = useState(()=> JSON.parse(window.localStorage.getItem('contacts')));
+const [contacts, setContacts] = useState(()=> JSON.parse(window.localStorage.getItem('contacts')) || []);
     const [filter, setFilter] = useState("");
 
   useEffect(()=>{
@@ -35,13 +35,10 @@ const [contacts, setContacts] = useState(()=> JSON.parse(window.localStorage.get
     return contacts.filter(element => element.name.toLowerCase().includes(filter));
   };
 
-  const deleteContact = (target) => {
-    if(target.nodeName !== 'BUTTON') {
-      return;
-    }
-    const name = target.name;
-    setContacts(prevState => (prevState.filter(contact => contact.name !== name)));
-    Notify.failure(`${name} is deleted from your contact list`);
+  const deleteContact = (id) => {
+    // console.log(id);
+    setContacts(prevState => (prevState.filter(contact => contact.name !== id)));
+    Notify.failure(`${id} is deleted from your contact list`);
   };
 
 

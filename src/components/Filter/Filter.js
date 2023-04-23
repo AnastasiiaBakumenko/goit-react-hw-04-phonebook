@@ -1,16 +1,11 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
 import { Label, Input } from "./Filter.styled";
 
 export function Filter ({ getFilterRequest}) {
-    const [value, setValue] = useState("");
 
-    useEffect(() => {
-        getFilterRequest(value);
-    }, [value,getFilterRequest]);
 
     const onChange = e =>{
-        setValue(e.currentTarget.value)
+        getFilterRequest(e.currentTarget.value)
     }
     
     return (
@@ -19,7 +14,7 @@ export function Filter ({ getFilterRequest}) {
             <Input
                 type="text"
                 name="filter"
-                value={value}
+                
                 onChange={onChange}
             />
         </Label>
